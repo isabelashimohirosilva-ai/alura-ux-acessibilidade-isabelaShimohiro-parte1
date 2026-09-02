@@ -1,0 +1,132 @@
+/* Configurações Globais de Acessibilidade */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px; /* Fonte ampliada para facilitar a leitura */
+    line-height: 1.6;
+    background-color: #F4F4F9;
+    color: #111111; /* Alto contraste entre texto e fundo */
+    padding: 15px;
+}
+
+/* Cabeçalho */
+.cabecalho {
+    background-color: #004085; /* Azul escuro de alto contraste */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 25px 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.cabecalho h1 {
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    font-size: 20px;
+}
+
+/* Navegação e Botões Grandes */
+.menu-navegacao ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.botao-menu {
+    display: block;
+    background-color: #28A745; /* Verde chamativo para botões principais */
+    color: #FFFFFF;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 3px solid #1E7E34;
+}
+
+.botao-menu:focus, .botao-menu:hover {
+    background-color: #1E7E34;
+    outline: 4px solid #FFC107; /* Borda amarela visível ao selecionar */
+}
+
+/* Seções e Cartões de Conteúdo */
+.secao {
+    margin-bottom: 40px;
+}
+
+.secao h2 {
+    font-size: 30px;
+    color: #004085;
+    border-bottom: 4px solid #004085;
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+}
+
+.cartao {
+    background-color: #FFFFFF;
+    border: 2px solid #CCCCCC;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cartao h3 {
+    font-size: 26px;
+    color: #222222;
+    margin-bottom: 10px;
+}
+
+.cartao p {
+    font-size: 22px;
+    color: #333333;
+}
+
+/* Estilo para Notícias */
+.tag {
+    display: inline-block;
+    background-color: #E2E3E5;
+    color: #383D41;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    color: #555555;
+    border-top: 2px solid #CCCCCC;
+    margin-top: 20px;
+}
+
+/* Ajustes para telas maiores */
+@media (min-width: 600px) {
+    body {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .menu-navegacao ul {
+        flex-direction: row;
+    }
+
+    .menu-navegacao li {
+        flex: 1;
+    }
+}
