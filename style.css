@@ -1,78 +1,8 @@
-/* Configurações Globais de Acessibilidade */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+/* ========================================================
+   ESTILOS PARA O EFEITO DE MODAL E SOBREPOSIÇÃO (CSS PURO)
+   ======================================================== */
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px; /* Fonte ampliada para facilitar a leitura */
-    line-height: 1.6;
-    background-color: #F4F4F9;
-    color: #111111; /* Alto contraste entre texto e fundo */
-    padding: 15px;
-}
-
-/* Cabeçalho */
-.cabecalho {
-    background-color: #004085; /* Azul escuro de alto contraste */
-    color: #FFFFFF;
-    text-align: center;
-    padding: 25px 15px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-}
-
-.cabecalho h1 {
-    font-size: 38px;
-    margin-bottom: 5px;
-}
-
-.subtitulo {
-    font-size: 20px;
-}
-
-/* Navegação e Botões Grandes */
-.menu-navegacao ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
-}
-
-.botao-menu {
-    display: block;
-    background-color: #28A745; /* Verde chamativo para botões principais */
-    color: #FFFFFF;
-    text-decoration: none;
-    text-align: center;
-    padding: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    border-radius: 10px;
-    border: 3px solid #1E7E34;
-}
-
-.botao-menu:focus, .botao-menu:hover {
-    background-color: #1E7E34;
-    outline: 4px solid #FFC107; /* Borda amarela visível ao selecionar */
-}
-
-/* Seções e Cartões de Conteúdo */
-.secao {
-    margin-bottom: 40px;
-}
-
-.secao h2 {
-    font-size: 30px;
-    color: #004085;
-    border-bottom: 4px solid #004085;
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-}
-
+/* Ajuste nos Cartões para permitir interatividade */
 .cartao {
     background-color: #FFFFFF;
     border: 2px solid #CCCCCC;
@@ -80,53 +10,77 @@ body {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
-.cartao h3 {
-    font-size: 26px;
-    color: #222222;
-    margin-bottom: 10px;
+/* Efeito ao passar o mouse por cima */
+.cartao:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    border-color: #004085;
 }
 
-.cartao p {
-    font-size: 22px;
-    color: #333333;
-}
-
-/* Estilo para Notícias */
-.tag {
-    display: inline-block;
-    background-color: #E2E3E5;
-    color: #383D41;
-    font-size: 18px;
+/* Indicador de clique */
+.dica-clique {
+    display: block;
+    font-size: 14px;
+    color: #004085;
     font-weight: bold;
-    padding: 5px 12px;
-    border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-/* Rodapé */
-.rodape {
-    text-align: center;
-    padding: 20px;
-    font-size: 18px;
-    color: #555555;
-    border-top: 2px solid #CCCCCC;
-    margin-top: 20px;
+/* Botão de Fechar dentro do Modal (Escondido por padrão) */
+.botao-fechar {
+    display: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #DC3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
-/* Ajustes para telas maiores */
-@media (min-width: 600px) {
-    body {
-        max-width: 800px;
-        margin: 0 auto;
-    }
+/* --- ESTADO DO CARD QUANDO ESTIVER EM FOCO (MODAL ATIVO) --- */
+.cartao:focus {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.05);
+    width: 90%;
+    max-width: 600px;
+    z-index: 1000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 3px solid #004085;
+    outline: none;
+    cursor: default;
+}
 
-    .menu-navegacao ul {
-        flex-direction: row;
-    }
+/* Esconde a instrução "clique para ampliar" quando o card virar modal */
+.cartao:focus .dica-clique {
+    display: none;
+}
 
-    .menu-navegacao li {
-        flex: 1;
-    }
+/* Mostra o botão de fechar quando o card for clicado */
+.cartao:focus .botao-fechar {
+    display: block;
+}
+
+/* Camada Escura de Fundo (Backdrop Overlay) */
+.cartao:focus::before {
+    content: "";
+    position: fixed;
+    top: -50vh;
+    left: -50vw;
+    width: 200vw;
+    height: 200vh;
+    background-color: rgba(0, 0, 0, 0.75); /* Escurece o fundo */
+    z-index: -1;
+    pointer-events: none;
 }
